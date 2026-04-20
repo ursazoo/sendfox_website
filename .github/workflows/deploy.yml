@@ -1,0 +1,72 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY_BASE64 }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 118.31.72.98 >> ~/.ssh/known_hosts
+          ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@118.31.72.98 "echo 'SSH connection successful'"
+
+      - name: Deploy to server
+        run: |
+          set -x
+
+          # 创建部署目录（首次）
+          ssh root@118.31.72.98 "mkdir -p /var/www/sendfox-website"
+
+          # 备份旧版本
+          ssh root@118.31.72.98 "cd /var/www/sendfox-website && if [ -d 'dist' ]; then mv dist dist.backup.\$(date +%s); fi"
+
+          # 上传新构建文件
+          rsync -avz --delete -e "ssh" \
+            dist/ \
+            root@118.31.72.98:/var/www/sendfox-website/dist/
+
+          # 清理旧备份（保留最近 3 个）
+          ssh root@118.31.72.98 "cd /var/www/sendfox-website && ls -dt dist.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || true"
+
+      - name: Cleanup SSH
+        if: always()
+        run: rm -rf ~/.ssh/id_rsa
+
+      - name: Verify deployment
+        run: |
+          sleep 2
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://doc.sendfox.me)
+          if [ "$response" = "200" ]; then
+            echo "✅ 部署成功！"
+          else
+            echo "❌ 部署失败，状态码: $response"
+            exit 1
+          fi
