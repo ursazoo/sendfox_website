@@ -18,23 +18,23 @@ const { Content, headings } = await render(entry);
 <DocsLayout title={entry.data.title} description={entry.data.description} headings={headings}>
   <h1 class="text-3xl font-bold tracking-tight">{entry.data.title}</h1>
   {entry.data.description && (
-    <p class="mt-2 text-text-muted">{entry.data.description}</p>
+    <p class="mt-2 text-muted-foreground">{entry.data.description}</p>
   )}
-  <div class="prose-invert mt-8">
+  <div class="prose-custom mt-8">
     <Content />
   </div>
   <PrevNext currentId={entry.id} />
 </DocsLayout>
 
 <style is:global>
-  .prose-invert {
+  .prose-custom {
     h2 {
       margin-top: 2rem;
       margin-bottom: 0.75rem;
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--color-text);
-      border-bottom: 1px solid var(--color-border);
+      color: var(--foreground);
+      border-bottom: 1px solid var(--border);
       padding-bottom: 0.5rem;
     }
     h3 {
@@ -42,42 +42,45 @@ const { Content, headings } = await render(entry);
       margin-bottom: 0.5rem;
       font-size: 1.2rem;
       font-weight: 600;
-      color: var(--color-text);
+      color: var(--foreground);
     }
     p {
       margin: 0.75rem 0;
       line-height: 1.75;
-      color: var(--color-text-muted);
+      color: var(--muted-foreground);
     }
     ul, ol {
       margin: 0.75rem 0;
       padding-left: 1.5rem;
-      color: var(--color-text-muted);
+      color: var(--muted-foreground);
     }
     li {
       margin: 0.25rem 0;
       line-height: 1.75;
     }
     strong {
-      color: var(--color-text);
+      color: var(--foreground);
       font-weight: 600;
     }
     a {
-      color: var(--color-accent);
-      text-decoration: none;
+      color: var(--foreground);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 2px;
     }
     a:hover {
-      text-decoration: underline;
+      color: var(--primary);
+      text-decoration-color: var(--primary);
     }
     code {
-      background: var(--color-brand-lighter);
+      background: var(--muted);
       padding: 0.15rem 0.4rem;
       border-radius: 0.25rem;
       font-size: 0.875rem;
     }
     pre {
-      background: var(--color-brand-light);
-      border: 1px solid var(--color-border);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 0.5rem;
       padding: 1rem;
       overflow-x: auto;
@@ -88,10 +91,10 @@ const { Content, headings } = await render(entry);
       padding: 0;
     }
     blockquote {
-      border-left: 3px solid var(--color-accent);
+      border-left: 3px solid var(--border);
       padding-left: 1rem;
       margin: 1rem 0;
-      color: var(--color-text-muted);
+      color: var(--muted-foreground);
       font-style: italic;
     }
     img {
@@ -105,25 +108,25 @@ const { Content, headings } = await render(entry);
       margin: 1rem 0;
     }
     th, td {
-      border: 1px solid var(--color-border);
+      border: 1px solid var(--border);
       padding: 0.5rem 0.75rem;
       text-align: left;
       font-size: 0.875rem;
     }
     th {
-      background: var(--color-brand-lighter);
-      color: var(--color-text);
+      background: var(--muted);
+      color: var(--foreground);
       font-weight: 600;
     }
     td {
-      color: var(--color-text-muted);
+      color: var(--muted-foreground);
     }
     .doc-image-placeholder {
       margin: 1.5rem 0;
       border-radius: 0.5rem;
       overflow: hidden;
-      border: 1px dashed var(--color-border);
-      background: var(--color-brand-light);
+      border: 1px dashed var(--border);
+      background: var(--muted);
       min-height: 200px;
       display: flex;
       align-items: center;

@@ -15,7 +15,7 @@ const filtered = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 {filtered.length > 0 && (
   <nav>
-    <div class="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
+    <div class="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
       目录
     </div>
     <ul class="space-y-1">
@@ -24,8 +24,8 @@ const filtered = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
           <a
             href={`#${h.slug}`}
             class:list={[
-              'block text-xs no-underline transition-colors hover:text-text',
-              h.depth === 2 ? 'text-text-muted' : 'pl-3 text-text-muted/70',
+              'block text-xs no-underline transition-colors hover:text-foreground',
+              h.depth === 2 ? 'text-muted-foreground' : 'pl-3 text-muted-foreground/70',
             ]}
           >
             {h.text}
