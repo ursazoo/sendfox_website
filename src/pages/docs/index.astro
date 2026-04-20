@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+
+const allDocs = await getCollection('docs');
+allDocs.sort((a, b) => a.data.order - b.data.order);
+
+const categoryNames: Record<string, string> = {
+  'getting-started': '快速开始',
+  'features': '功能说明',
+  'faq': '常见问题',
+};
+
+const categoryOrder = ['getting-started', 'features', 'faq'];
+
+const categories = new Map<string, typeof allDocs>();
+for (const doc of allDocs) {
+  const cat = doc.data.category;
+  if (!categories.has(cat)) categories.set(cat, []);
+  categories.get(cat)!.push(doc);
+}
+
+const sortedCategories = [...categories.entries()].sort(
+  (a, b) => categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0])
+);
+---
+
+<DocsLayout title="使用文档" description="SendFox 使用指南和常见问题">
+  <h1 class="text-3xl font-bold tracking-tight">使用文档</h1>
+  <p class="mt-2 text-text-muted">了解如何使用 SendFox 管理你的高校社区</p>
+
+  <div class="mt-10 space-y-10">
+    {sortedCategories.map(([category, docs]) => (
+      <div>
+        <h2 class="text-xl font-semibold text-text">{categoryNames[category] || category}</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {docs.map((doc) => (
+            <a
+              href={`/docs/${doc.id}/`}
+              class="group rounded-lg border border-border bg-brand-light p-4 no-underline transition-all hover:border-accent/30 hover:bg-brand-lighter"
+            >
+              <h3 class="text-sm font-semibold text-text group-hover:text-accent">
+                {doc.data.title}
+              </h3>
+              <p class="mt-1 text-xs text-text-muted line-clamp-2">
+                {doc.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</DocsLayout>

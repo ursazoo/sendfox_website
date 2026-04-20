@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import SearchButton from './SearchButton.astro';
+
+const allDocs = await getCollection('docs');
+
+// 按分类分组
+const categories = new Map<string, typeof allDocs>();
+for (const doc of allDocs) {
+  const cat = doc.data.category;
+  if (!categories.has(cat)) categories.set(cat, []);
+  categories.get(cat)!.push(doc);
+}
+
+// 每个分类内按 order 排序
+for (const docs of categories.values()) {
+  docs.sort((a, b) => a.data.order - b.data.order);
+}
+
+// 分类显示名称映射
+const categoryNames: Record<string, string> = {
+  'getting-started': '快速开始',
+  'features': '功能说明',
+  'faq': '常见问题',
+};
+
+// 分类排序
+const categoryOrder = ['getting-started', 'features', 'faq'];
+const sortedCategories = [...categories.entries()].sort(
+  (a, b) => categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0])
+);
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  <div class="mb-4">
+    <SearchButton />
+  </div>
+
+  <div class="mb-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
+    文档导航
+  </div>
+
+  {sortedCategories.map(([category, docs]) => (
+    <div class="mb-4">
+      <div class="mb-2 text-xs font-semibold text-text-muted">
+        {categoryNames[category] || category}
+      </div>
+      <ul class="space-y-0.5">
+        {docs.map((doc) => {
+          const href = `/docs/${doc.id}/`;
+          const isActive = currentPath === href;
+          return (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  'block rounded-md px-3 py-1.5 text-sm no-underline transition-colors',
+                  isActive
+                    ? 'bg-accent/10 text-accent font-medium'
+                    : 'text-text-muted hover:bg-brand-lighter hover:text-text',
+                ]}
+              >
+                {doc.data.title}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
+</nav>

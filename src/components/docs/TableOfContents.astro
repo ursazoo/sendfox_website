@@ -1,0 +1,37 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings = [] } = Astro.props;
+const filtered = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+{filtered.length > 0 && (
+  <nav>
+    <div class="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
+      目录
+    </div>
+    <ul class="space-y-1">
+      {filtered.map((h) => (
+        <li>
+          <a
+            href={`#${h.slug}`}
+            class:list={[
+              'block text-xs no-underline transition-colors hover:text-text',
+              h.depth === 2 ? 'text-text-muted' : 'pl-3 text-text-muted/70',
+            ]}
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

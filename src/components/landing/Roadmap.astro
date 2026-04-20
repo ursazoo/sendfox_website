@@ -1,0 +1,67 @@
+---
+import Container from '../shared/Container.astro';
+
+const items = [
+  {
+    status: 'current' as const,
+    title: '社区活跃运营',
+    desc: '多平台内容采集、智能发布、马甲号管理',
+  },
+  {
+    status: 'next' as const,
+    title: '社区内容管理',
+    desc: '自动识别广告、引流、兼职等违规内容，智能处理违规帖子和发帖人',
+  },
+  {
+    status: 'future' as const,
+    title: '全面运营工具',
+    desc: '数据分析、用户画像、内容推荐，成为高校社区一站式运营平台',
+  },
+];
+---
+
+<section class="py-20 md:py-28">
+  <Container>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">发展规划</h2>
+      <p class="mt-4 text-text-muted">从社区活跃到专业运营，持续进化</p>
+    </div>
+
+    <div class="mt-16 mx-auto max-w-2xl">
+      <div class="space-y-0">
+        {items.map((item, i) => {
+          const colors = {
+            current: 'border-accent bg-accent/10 text-accent',
+            next: 'border-border bg-brand-lighter text-text-muted',
+            future: 'border-border bg-brand-lighter text-text-muted',
+          };
+          const dotColors = {
+            current: 'bg-accent',
+            next: 'bg-text-muted',
+            future: 'bg-text-muted',
+          };
+          return (
+            <div class="relative flex gap-6 pb-8">
+              {/* 时间线 */}
+              <div class="flex flex-col items-center">
+                <div class={`h-3 w-3 rounded-full ${dotColors[item.status]} ring-4 ring-brand`} />
+                {i < items.length - 1 && <div class="h-full w-px bg-border" />}
+              </div>
+              {/* 内容 */}
+              <div class={`-mt-0.5 rounded-lg border p-4 ${colors[item.status]}`}>
+                {item.status === 'current' && (
+                  <div class="mb-1 text-xs font-semibold">当前阶段</div>
+                )}
+                {item.status === 'next' && (
+                  <div class="mb-1 text-xs font-semibold">即将推出</div>
+                )}
+                <h3 class="text-base font-semibold text-text">{item.title}</h3>
+                <p class="mt-1 text-sm text-text-muted">{item.desc}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </Container>
+</section>

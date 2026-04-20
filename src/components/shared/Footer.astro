@@ -1,0 +1,44 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-brand-light">
+  <div class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-accent">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-bold">SendFox</span>
+        </div>
+        <p class="mt-3 text-sm text-text-muted">
+          面向高校社区的专业运营工具
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="text-sm font-semibold text-text">导航</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/" class="text-sm text-text-muted no-underline hover:text-text">首页</a></li>
+          <li><a href="/docs/" class="text-sm text-text-muted no-underline hover:text-text">使用文档</a></li>
+          <li><a href="/admin/" target="_blank" class="text-sm text-text-muted no-underline hover:text-text">管理后台</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold text-text">联系我们</h3>
+        <ul class="mt-3 space-y-2">
+          <li class="text-sm text-text-muted">如有问题或合作需求，请通过管理后台联系</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-border pt-6 text-center text-xs text-text-muted">
+      &copy; {currentYear} SendFox. All rights reserved.
+    </div>
+  </div>
+</footer>

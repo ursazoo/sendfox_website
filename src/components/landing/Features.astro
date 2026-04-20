@@ -1,0 +1,47 @@
+---
+import Container from '../shared/Container.astro';
+
+const features = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>`,
+    title: '多平台采集',
+    desc: '支持狐友、赞噢等主流高校社区平台，一键采集优质内容',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`,
+    title: '智能发布',
+    desc: '自动分发内容到目标学校，马甲号轮换，定时发布，批量管理',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0110 10 10 10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2z"/><path d="M12 6v6l4 2"/></svg>`,
+    title: 'AI 审核',
+    desc: 'AI 智能审核内容质量，敏感词检测，自动改写，确保内容合规',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+    title: '批量管理',
+    desc: 'Excel 批量导入，批量图片管理，一键重试失败任务，高效省时',
+  },
+];
+---
+
+<section class="py-20 md:py-28">
+  <Container>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">核心功能</h2>
+      <p class="mt-4 text-text-muted">一站式解决社区运营的所有痛点</p>
+    </div>
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {features.map((f) => (
+        <div class="group rounded-xl border border-border bg-brand-light p-6 transition-all hover:border-accent/30 hover:bg-brand-lighter">
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+            <Fragment set:html={f.icon} />
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">{f.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-text-muted">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

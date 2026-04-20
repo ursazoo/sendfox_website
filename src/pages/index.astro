@@ -1,0 +1,21 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Hero from '../components/landing/Hero.astro';
+import Features from '../components/landing/Features.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import Highlights from '../components/landing/Highlights.astro';
+import Roadmap from '../components/landing/Roadmap.astro';
+import CTA from '../components/landing/CTA.astro';
+---
+
+<LandingLayout
+  title="SendFox - 面向高校社区的专业运营工具"
+  description="SendFox 帮助你轻松管理高校社区，自动采集和发布优质内容，智能审核过滤违规信息，让社区运营更轻松。"
+>
+  <Hero />
+  <Features />
+  <HowItWorks />
+  <Highlights />
+  <Roadmap />
+  <CTA />
+</LandingLayout>

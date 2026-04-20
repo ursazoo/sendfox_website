@@ -1,0 +1,44 @@
+---
+import Container from '../shared/Container.astro';
+
+const steps = [
+  {
+    num: '01',
+    title: '配置账号',
+    desc: '添加你的社区平台账号，支持手机号验证码快速登录绑定',
+  },
+  {
+    num: '02',
+    title: '设置任务',
+    desc: '选择采集源和发布目标，配置发布策略和马甲号轮换规则',
+  },
+  {
+    num: '03',
+    title: '自动运行',
+    desc: '系统自动采集、审核、发布，你只需要关注数据和结果',
+  },
+];
+---
+
+<section class="py-20 md:py-28">
+  <Container>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">简单三步，开始运营</h2>
+      <p class="mt-4 text-text-muted">从配置到自动运行，只需几分钟</p>
+    </div>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-3">
+      {steps.map((step, i) => (
+        <div class="relative">
+          {/* 连接线（仅 PC 端显示） */}
+          {i < steps.length - 1 && (
+            <div class="absolute right-0 top-8 hidden h-px w-[calc(50%-2rem)] translate-x-full bg-border md:block"></div>
+          )}
+          <div class="text-5xl font-black text-accent/20">{step.num}</div>
+          <h3 class="mt-4 text-xl font-semibold">{step.title}</h3>
+          <p class="mt-2 text-text-muted leading-relaxed">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

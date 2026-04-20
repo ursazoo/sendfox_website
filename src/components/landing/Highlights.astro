@@ -1,0 +1,47 @@
+---
+import Container from '../shared/Container.astro';
+
+const highlights = [
+  {
+    title: '马甲号轮换',
+    desc: '发布任务自动轮换马甲号，降低被识别为营销号的风险，让内容分发更自然',
+    tag: '灵活配置',
+  },
+  {
+    title: 'Excel 批量导入',
+    desc: '下载标准模板，批量填好内容，一键上传即可创建大量帖子，告别手动逐条录入',
+    tag: '高效省时',
+  },
+  {
+    title: 'AI 智能审核与改写',
+    desc: '自动检测敏感词，AI 智能改写内容，确保每一篇帖子都符合社区规范',
+    tag: '安全合规',
+  },
+  {
+    title: '手机号快速登录',
+    desc: '狐友平台支持手机验证码一键绑定，无需繁琐的抓包操作，简化账号管理流程',
+    tag: '便捷操作',
+  },
+];
+---
+
+<section class="py-20 md:py-28">
+  <Container>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">亮点功能</h2>
+      <p class="mt-4 text-text-muted">每一个细节都为效率而生</p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2">
+      {highlights.map((h) => (
+        <div class="group rounded-xl border border-border bg-brand-light p-6 transition-all hover:border-accent/30">
+          <div class="mb-3 inline-flex rounded-md bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
+            {h.tag}
+          </div>
+          <h3 class="text-lg font-semibold">{h.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-text-muted">{h.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

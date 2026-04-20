@@ -1,0 +1,51 @@
+---
+import Container from '../shared/Container.astro';
+---
+
+<section class="relative overflow-hidden py-24 md:py-32 lg:py-40">
+  <!-- 背景装饰 -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-accent/5 blur-[120px]"></div>
+  </div>
+
+  <Container class="relative">
+    <div class="mx-auto max-w-3xl text-center">
+      <!-- Badge -->
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5 text-sm text-accent">
+        <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
+        面向高校社区的专业运营工具
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+        让高校社区
+        <span class="text-accent">运营更轻松</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted md:text-xl">
+        SendFox 帮助你轻松管理高校社区，自动采集和发布优质内容，智能审核过滤违规信息，让你的社区活跃起来。
+      </p>
+
+      <!-- CTA -->
+      <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href="/admin/"
+          target="_blank"
+          class="inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white no-underline transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20"
+        >
+          立即开始
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="/docs/"
+          class="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3 text-base font-medium text-text no-underline transition-colors hover:border-text-muted hover:text-text"
+        >
+          查看文档
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>
