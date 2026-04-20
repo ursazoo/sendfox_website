@@ -20,7 +20,7 @@ SendFox 涉及两类平台账号：
 
 ### 系统要求
 
-- **macOS**：任意版本
+- **macOS**：macOS 13 (Ventura) 及以上
 - **Windows**：推荐 Windows 11
 
 ### 安装证书
