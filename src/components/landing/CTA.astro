@@ -2,39 +2,25 @@
 import Container from '../shared/Container.astro';
 ---
 
-<section class="py-20 md:py-28">
+<section class="py-12 md:py-16">
   <Container>
-    <div class="relative overflow-hidden rounded-2xl border border-border bg-brand-light px-6 py-16 text-center md:px-12 md:py-20">
-      {/* 背景装饰 */}
-      <div class="pointer-events-none absolute inset-0">
-        <div class="absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-[100px]"></div>
-      </div>
-
-      <div class="relative">
-        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">
-          准备好提升社区活跃度了吗？
-        </h2>
-        <p class="mx-auto mt-4 max-w-lg text-text-muted">
-          立即开始使用 SendFox，让你的高校社区运营事半功倍
-        </p>
-        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href="/admin/"
-            target="_blank"
-            class="inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white no-underline transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20"
-          >
-            立即开始使用
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a
-            href="/docs/"
-            class="text-sm text-text-muted no-underline transition-colors hover:text-text"
-          >
-            查看使用文档 &rarr;
-          </a>
-        </div>
+    <div class="rounded-xl border border-border bg-card px-8 py-12 text-center shadow-sm md:px-12 md:py-14">
+      <h2 class="text-2xl font-bold tracking-tight md:text-3xl">
+        准备好提升社区活跃度了吗？
+      </h2>
+      <p class="mx-auto mt-3 max-w-md text-muted-foreground">
+        从绑定账号到自动发布，SendFox 让高校社区运营变成一件轻松的事
+      </p>
+      <div class="mt-6">
+        <a
+          href="/docs/"
+          class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground no-underline transition-colors hover:bg-primary/90"
+        >
+          阅读快速上手指南
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </div>
   </Container>

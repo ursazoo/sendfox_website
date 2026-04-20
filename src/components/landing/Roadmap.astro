@@ -20,31 +20,31 @@ const items = [
 ];
 ---
 
-<section class="py-20 md:py-28">
+<section class="py-10 md:py-16">
   <Container>
     <div class="text-center">
       <h2 class="text-3xl font-bold tracking-tight md:text-4xl">发展规划</h2>
-      <p class="mt-4 text-text-muted">从社区活跃到专业运营，持续进化</p>
+      <p class="mt-4 text-muted-foreground">从社区活跃到专业运营，持续进化</p>
     </div>
 
     <div class="mt-16 mx-auto max-w-2xl">
       <div class="space-y-0">
         {items.map((item, i) => {
           const colors = {
-            current: 'border-accent bg-accent/10 text-accent',
-            next: 'border-border bg-brand-lighter text-text-muted',
-            future: 'border-border bg-brand-lighter text-text-muted',
+            current: 'border-primary bg-primary/10 text-primary',
+            next: 'border-border bg-card text-muted-foreground',
+            future: 'border-border bg-card text-muted-foreground',
           };
           const dotColors = {
-            current: 'bg-accent',
-            next: 'bg-text-muted',
-            future: 'bg-text-muted',
+            current: 'bg-primary',
+            next: 'bg-muted-foreground',
+            future: 'bg-muted-foreground',
           };
           return (
             <div class="relative flex gap-6 pb-8">
               {/* 时间线 */}
               <div class="flex flex-col items-center">
-                <div class={`h-3 w-3 rounded-full ${dotColors[item.status]} ring-4 ring-brand`} />
+                <div class={`h-3 w-3 rounded-full ${dotColors[item.status]} ring-4 ring-background`} />
                 {i < items.length - 1 && <div class="h-full w-px bg-border" />}
               </div>
               {/* 内容 */}
@@ -55,8 +55,8 @@ const items = [
                 {item.status === 'next' && (
                   <div class="mb-1 text-xs font-semibold">即将推出</div>
                 )}
-                <h3 class="text-base font-semibold text-text">{item.title}</h3>
-                <p class="mt-1 text-sm text-text-muted">{item.desc}</p>
+                <h3 class="text-base font-semibold text-foreground">{item.title}</h3>
+                <p class="mt-1 text-sm text-muted-foreground">{item.desc}</p>
               </div>
             </div>
           );

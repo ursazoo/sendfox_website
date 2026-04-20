@@ -1,21 +1,42 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
-import Hero from '../components/landing/Hero.astro';
 import Features from '../components/landing/Features.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
 import Highlights from '../components/landing/Highlights.astro';
-import Roadmap from '../components/landing/Roadmap.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
 import CTA from '../components/landing/CTA.astro';
 ---
 
 <LandingLayout
-  title="SendFox - 面向高校社区的专业运营工具"
-  description="SendFox 帮助你轻松管理高校社区，自动采集和发布优质内容，智能审核过滤违规信息，让社区运营更轻松。"
+  title="SendFox - 高校社区智能内容分发平台"
+  description="SendFox 帮助你自动采集优质内容，AI 审核改写，一键分发到多个高校社区，让运营效率提升 10 倍。"
 >
-  <Hero />
+  <!-- Hero -->
+  <section class="relative flex items-center justify-center px-4 py-24 overflow-hidden md:min-h-screen">
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-muted via-background to-muted/50"></div>
+    <div class="relative mx-auto max-w-3xl text-center">
+      <h1 class="text-4xl font-bold tracking-tight md:text-6xl" style={`text-shadow: var(--text-shadow)`}>
+        高校社区内容
+        <span class="text-muted-foreground">自动化运营</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+        从内容采集、AI 审核改写到多平台自动发布，SendFox 覆盖社区运营全流程，让你专注于结果而非重复劳动。
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a
+          href="/docs/"
+          class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground no-underline transition-colors hover:bg-primary/90"
+        >
+          快速上手
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <Features />
-  <HowItWorks />
   <Highlights />
-  <Roadmap />
+  <HowItWorks />
   <CTA />
 </LandingLayout>

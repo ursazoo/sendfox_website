@@ -4,39 +4,39 @@ import Container from '../shared/Container.astro';
 const steps = [
   {
     num: '01',
-    title: '配置账号',
-    desc: '添加你的社区平台账号，支持手机号验证码快速登录绑定',
+    title: '绑定平台账号',
+    desc: '下载桌面客户端，通过 HTTPS 抓包自动提取 Token；狐友平台支持手机验证码快速登录',
   },
   {
     num: '02',
-    title: '设置任务',
-    desc: '选择采集源和发布目标，配置发布策略和马甲号轮换规则',
+    title: '配置采集与发布',
+    desc: '选择采集源学校和发布目标学校，设置马甲号轮换策略和发布间隔，开启 AI 审核',
   },
   {
     num: '03',
     title: '自动运行',
-    desc: '系统自动采集、审核、发布，你只需要关注数据和结果',
+    desc: '系统按计划自动采集内容、AI 审核改写、分发到目标社区，你只需查看数据面板',
   },
 ];
 ---
 
-<section class="py-20 md:py-28">
+<section class="bg-muted/40 py-12 md:py-16">
   <Container>
     <div class="text-center">
-      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">简单三步，开始运营</h2>
-      <p class="mt-4 text-text-muted">从配置到自动运行，只需几分钟</p>
+      <h2 class="text-2xl font-bold tracking-tight md:text-3xl">三步开始运营</h2>
+      <p class="mt-2 text-muted-foreground">从账号绑定到自动运行，最快 10 分钟搞定</p>
     </div>
 
-    <div class="mt-16 grid gap-8 md:grid-cols-3">
-      {steps.map((step, i) => (
-        <div class="relative">
-          {/* 连接线（仅 PC 端显示） */}
-          {i < steps.length - 1 && (
-            <div class="absolute right-0 top-8 hidden h-px w-[calc(50%-2rem)] translate-x-full bg-border md:block"></div>
-          )}
-          <div class="text-5xl font-black text-accent/20">{step.num}</div>
-          <h3 class="mt-4 text-xl font-semibold">{step.title}</h3>
-          <p class="mt-2 text-text-muted leading-relaxed">{step.desc}</p>
+    <div class="mt-10 space-y-6">
+      {steps.map((step) => (
+        <div class="flex items-start gap-6">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+            {step.num}
+          </div>
+          <div class="border-b border-border pb-6 flex-1">
+            <h3 class="font-semibold">{step.title}</h3>
+            <p class="mt-1 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+          </div>
         </div>
       ))}
     </div>
