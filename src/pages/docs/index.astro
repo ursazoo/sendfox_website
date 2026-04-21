@@ -28,6 +28,7 @@ const sortedCategories = [...categories.entries()].sort(
 <DocsLayout title="使用文档" description="SendFox 使用指南和常见问题">
   <h1 class="text-3xl font-bold tracking-tight">使用文档</h1>
   <p class="mt-2 text-muted-foreground">了解如何使用 SendFox 管理你的高校社区</p>
+  <p class="mt-1 text-sm text-muted-foreground">第一次使用？建议从 <a href="/docs/getting-started/product-overview/" class="text-primary hover:underline">产品概览</a> 开始。</p>
 
   <div class="mt-10 space-y-10">
     {sortedCategories.map(([category, docs]) => (

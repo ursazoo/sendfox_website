@@ -5,6 +5,8 @@ order: 4
 category: features
 ---
 
+> AI 配置在 [快速上手 → 第二步](/docs/getting-started/quick-start/#第二步购买订阅并配置-ai) 中完成。本页详细说明审核和改写的工作机制。
+
 ## 审核流程
 
 所有内容在发布前都会经过审核流程：
@@ -58,3 +60,8 @@ AI 审核包含两个层级：
 - 改写结果保存在发布记录中
 
 > AI 改写只在发布环节生效，不会修改原始采集内容。
+
+## 相关文档
+
+- [内容采集](/docs/features/content-crawl/) — 采集的内容会自动进入 AI 审核流程
+- [自动发布](/docs/features/auto-publish/) — 发布时可开启 AI 改写

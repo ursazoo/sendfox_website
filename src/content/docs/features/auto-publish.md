@@ -5,6 +5,8 @@ order: 2
 category: features
 ---
 
+> 前置准备：[绑定目标社区账号](/docs/getting-started/account-setup/#目标社区手机验证码登录) + [购买订阅并绑定学校名额](/docs/features/school-and-subscription/) — 发布需要有效账号和学校名额。
+
 ## 工作原理
 
 发布任务从已审核通过的帖子池中选取内容，自动发布到配置的目标社区：
@@ -85,3 +87,9 @@ category: features
 - 开启马甲号轮换
 - 开启 AI 改写，避免内容重复
 - 设置发布时段，避开低活跃时间
+
+## 相关文档
+
+- [内容采集](/docs/features/content-crawl/) — 发布内容的来源
+- [AI 审核与改写](/docs/features/ai-review/) — 配置发布前的内容改写规则
+- [学校管理与订阅](/docs/features/school-and-subscription/) — 管理发布学校和名额

@@ -5,6 +5,8 @@ order: 5
 category: features
 ---
 
+> 前置阅读：[产品概览](/docs/getting-started/product-overview/) — 了解"学校""名额""采集学校 vs 发布学校"等核心概念。
+
 ## 学校是怎么产生的
 
 学校记录是系统自动生成的，**不需要手动添加**。当你在桌面客户端抓包并上传账号时，选择对应的学校后，系统会自动创建学校记录。
@@ -65,3 +67,9 @@ category: features
 - 采集学校必须配置发布绑定，否则采集到的内容不会产生发布记录
 - 支持一对多绑定（一个采集学校对应多个发布学校）
 - 发布时优先选取与目标学校相同的内容，无同校内容时自动回落到其他待发布帖子
+
+## 相关文档
+
+- [账号管理](/docs/getting-started/account-setup/) — 上传账号时系统会自动创建学校记录
+- [自动发布](/docs/features/auto-publish/) — 发布学校需要占用名额
+- [内容采集](/docs/features/content-crawl/) — 采集学校不受名额限制
