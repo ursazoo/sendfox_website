@@ -5,6 +5,8 @@ order: 2
 category: getting-started
 ---
 
+> 前置阅读：[产品概览](/docs/getting-started/product-overview/) — 了解"内容社区"和"目标社区"的区别。
+
 ## 平台与账号对应关系
 
 SendFox 涉及两类平台账号：
