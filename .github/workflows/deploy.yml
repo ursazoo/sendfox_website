@@ -33,39 +33,44 @@ jobs:
       - name: Configure SSH
         env:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 118.31.72.98 >> ~/.ssh/known_hosts
-          ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@118.31.72.98 "echo 'SSH connection successful'"
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 "root@$DEPLOY_HOST" "echo 'SSH connection successful'"
 
       - name: Deploy to server
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
           set -x
 
           # 创建部署目录（首次）
-          ssh root@118.31.72.98 "mkdir -p /var/www/sendfox-website"
+          ssh "root@$DEPLOY_HOST" "mkdir -p /var/www/sendfox-website"
 
           # 备份旧版本
-          ssh root@118.31.72.98 "cd /var/www/sendfox-website && if [ -d 'dist' ]; then mv dist dist.backup.\$(date +%s); fi"
+          ssh "root@$DEPLOY_HOST" "cd /var/www/sendfox-website && if [ -d 'dist' ]; then mv dist dist.backup.\$(date +%s); fi"
 
           # 上传新构建文件
           rsync -avz --delete -e "ssh" \
             dist/ \
-            root@118.31.72.98:/var/www/sendfox-website/dist/
+            "root@$DEPLOY_HOST":/var/www/sendfox-website/dist/
 
           # 清理旧备份（保留最近 3 个）
-          ssh root@118.31.72.98 "cd /var/www/sendfox-website && ls -dt dist.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || true"
+          ssh "root@$DEPLOY_HOST" "cd /var/www/sendfox-website && ls -dt dist.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || true"
 
       - name: Cleanup SSH
         if: always()
         run: rm -rf ~/.ssh/id_ed25519
 
       - name: Verify deployment
+        env:
+          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_DOMAIN }}
         run: |
           sleep 2
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://doc.sendfox.me)
+          response=$(curl -s -o /dev/null -w "%{http_code}" "https://$DEPLOY_DOMAIN")
           if [ "$response" = "200" ]; then
             echo "✅ 部署成功！"
           else
