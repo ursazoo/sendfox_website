@@ -35,7 +35,7 @@ category: getting-started
 
 ## 注册 SendFox 账号
 
-1. 打开 SendFox 管理后台，点击「注册」
+1. 打开 [SendFox 管理后台](https://www.sendfox.me)，点击「注册」
 2. 填写手机号，获取验证码，设置密码
 3. 注册完成后登录
 

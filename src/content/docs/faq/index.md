@@ -74,4 +74,4 @@ SendFox 目前不限制登录设备数量，你可以在多台设备上同时使
 
 ### 如何联系技术支持？
 
-如有以上未覆盖的问题，请通过管理后台的联系渠道与客服取得联系。
+如有以上未覆盖的问题或合作需求，请联系 [iamzhoufei@gmail.com](mailto:iamzhoufei@gmail.com)。
